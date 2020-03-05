@@ -70,7 +70,7 @@ def count_repeats(xs, x):
     left = 0
     right = len(xs) - 1
 
-    def step1(left,right):
+    def step1 (left,right):
         mid = (left+right)//2
         if x == xs[mid]:
             if mid == 0 or xs[mid-1] > x:
@@ -85,7 +85,7 @@ def count_repeats(xs, x):
         if x > xs[mid]:
             return step1 (left, mid-1) #you move the boundary to the right to find if the bigger numbers would match
 
-    def step2(left,right):
+    def step2 (left,right):
         mid = (left+right)//2
         if x == xs[mid]:
             if mid == len(xs)-1 or xs[mid+1] < x: #till the last one
@@ -95,9 +95,9 @@ def count_repeats(xs, x):
         if left == right:
             return None
         if x < xs[mid]:
-            return step2(mid+1,right) #searching backwards
+            return step2 (mid+1,right) #searching backwards
         if x > xs[mid]:
-            return step2(left, mid-1)
+            return step2 (left, mid-1)
 
     if len(xs) == 0:
         return 0
@@ -139,9 +139,9 @@ def argmin(f, lo, hi, epsilon=1e-3):
         if right-left < epsilon:
             return right
         if f(m1) > f(m2):
-            left=m1
+            left = m1
             return go(left,right)
         if f(m1) < f(m2):
-            right =m2
+            right = m2
             return go(left,right)
     return go(left, right)
